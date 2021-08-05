@@ -8,4 +8,11 @@
 * HTML5/CSS3 (Framework Bootstrap)
 * JavaScript
 
+## Главная страница
 ![Главная страница](https://i.ibb.co/KjPNfTT/2.jpg)
+
+## Авторизация
+![Авторизация](https://i.ibb.co/LDKr8pp/2.jpg)
+
+## Просмотр статьи
+![Просмотр статьи](https://i.ibb.co/9VCLR2Y/2.jpg)
