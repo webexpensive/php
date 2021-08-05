@@ -7,3 +7,5 @@
 * MySQL
 * HTML5/CSS3 (Framework Bootstrap)
 * JavaScript
+
+![Главная страница](https://ibb.co/d0TbV88)
