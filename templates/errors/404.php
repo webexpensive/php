@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Страница не найдена</title>
+	<meta charset="UTF-8">
+	<title>Страница не найдена</title>
 	<meta name="description" content="Описание тестового блога">
 	<meta name="keywords" content="Ключевые, слова, тестового, блога">
 	<meta name="author" lang="ru" content="Александр">
