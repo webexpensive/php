@@ -5,5 +5,5 @@
 * Apache
 * PHP
 * MySQL
-* HTML5/CSS3
+* HTML5/CSS3 (Framework Bootstrap)
 * JavaScript
