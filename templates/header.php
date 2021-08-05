@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title><?=$features_page->getTitle()?></title>
+	<meta charset="UTF-8">
+	<title><?=$features_page->getTitle()?></title>
 	<meta name="description" content="<?=$features_page->getDescription()?>">
 	<meta name="keywords" content="<?=$features_page->getKeywords()?>">
 	<meta name="author" lang="ru" content="Александр">
