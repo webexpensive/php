@@ -30,7 +30,7 @@ class FeaturesPageService
 
 	public static function getFeaturesPage()
     {
-		$page = new FeaturesPageService();
+	$page = new FeaturesPageService();
 
         return $page;
     }
@@ -39,8 +39,8 @@ class FeaturesPageService
     {
         $page = new FeaturesPageService();
         $page->title = $pageData['title'];
-		    $page->description = $pageData['description'];
-		    $page->key = $pageData['key'];
+	$page->description = $pageData['description'];
+	$page->key = $pageData['key'];
 
         return $page;
     }
