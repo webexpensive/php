@@ -4,7 +4,7 @@ namespace MyProject\Models\Pages;
 
 class FeaturesPageService
 {
-	/** @var string */
+    /** @var string */
     protected $title = 'Мой тестовый блог';
 	
     /** @var string */
@@ -13,29 +13,29 @@ class FeaturesPageService
     /** @var string */
     protected $key = 'Ключевые, слова, тестового, блога';
 
-	public function getTitle(): string
+    public function getTitle(): string
     {
         return $this->title;
     }
 	
-	public function getDescription(): string
+    public function getDescription(): string
     {
         return $this->description;
     }
 	
-	public function getKeywords(): string
+    public function getKeywords(): string
     {
         return $this->key;
     }
 
-	public static function getFeaturesPage()
+    public static function getFeaturesPage()
     {
 	$page = new FeaturesPageService();
 
         return $page;
     }
 	
-	public static function postDataPage(array $pageData): ? self
+    public static function postDataPage(array $pageData): ? self
     {
         $page = new FeaturesPageService();
         $page->title = $pageData['title'];
