@@ -19,12 +19,12 @@ public function Connect1C(): bool|object{
 		
     // подключаемся к серверу
 		$client = new SoapClient($this->url_1c,
-						array('login'          => $this->login_1c,
-								'password'       => $this->password_1c,
-								'soap_version'   => SOAP_1_2,
-								'cache_wsdl'     => WSDL_CACHE_NONE,
-								'exceptions'     => true,
-								'trace'          => true));
+				array('login'  => $this->login_1c,
+				'password'       => $this->password_1c,
+				'soap_version'   => SOAP_1_2,
+				'cache_wsdl'     => WSDL_CACHE_NONE,
+				'exceptions'     => true,
+				'trace'          => true));
 								
 	} catch ( SoapFault $e ) {
 		$this->set_log_1c_file ( $e );
