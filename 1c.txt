@@ -1,1 +1,70 @@
+Способы обмена php и 1С:
 
+- Сделал пользователь заказ, данные из формы обрабатываем и формируем json-массив, сохраняем в папке на сайте, к этой папке по ftp из 1с затем обращаются и забирают файл.Парсят на своей стороне.
+
+- Стандартный модуль Битрикса по обмену с 1с, там формируется определённая схема из полей, которые выбраны в админке, а я уже по id заказа делал дополнительные запросы к необходимым инфоблокам/хайлоад блокам и туда же выводил данные.
+
+- Если с нуля свой модуль писал для обмена, то использовал расширение SOAP PHP.
+
+
+// функция подключения к веб-сервису
+public function Connect1C(): bool|object{
+	
+	if (!function_exists('is_soap_fault')){
+		$this->set_log_1c_file ( 'Не найден модуль php-soap.' );
+		return false;
+	}
+	
+	try {
+		
+    // подключаемся к серверу
+		$client = new SoapClient($this->url_1c,
+						array('login'          => $this->login_1c,
+								'password'       => $this->password_1c,
+								'soap_version'   => SOAP_1_2,
+								'cache_wsdl'     => WSDL_CACHE_NONE,
+								'exceptions'     => true,
+								'trace'          => true));
+								
+	} catch ( SoapFault $e ) {
+		$this->set_log_1c_file ( $e );
+		return false;
+	}
+	
+	if ( is_soap_fault( $client ) ){
+		$this->set_log_1c_file ( 'Не удалось связаться с базой 1С.' );
+		return false;
+	}
+	
+	return $client;
+	
+}
+
+
+// функция, которая формирует и отправляет запрос к функции GetClientInfo
+public function GetData(object $client, string $code_client, string $password_client): bool|array{
+
+		try {
+			 
+			$params = [];
+			 
+			$params["RequestData"]["КодОрганизации"] = $this->code_1c;
+			$params["RequestData"]["КодКлиента"] = $code_client;
+			$params["RequestData"]["ПарольКлиента"] = $password_client;
+			$params["RequestData"]["РазделЗаявки"] = true;
+		  
+      // обращаемся к функции, передаём параметры
+			$result = $client->__soapCall('GetClientInfo', array( $params ));
+				
+			if ( !empty( $result->return->КодОшибки ) ) {
+				$this->set_logs ( $result->return->ОписаниеОшибки );
+				return false;
+			}
+				
+		} catch ( SoapFault $e ) {
+			$this->set_log_1c_file( $e );
+			return false;
+		}  
+
+	return $result;
+}
